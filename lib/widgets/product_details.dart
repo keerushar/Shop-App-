@@ -12,18 +12,18 @@ class ProductDetails extends StatelessWidget {
         Provider.of<Products>(context, listen: false).findById(productId);
     return Scaffold(
       appBar: AppBar(
-        title: Text(loadedProduct.title),
+        title: Text(loadedProduct.title!),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.network(loadedProduct.imageUrl),
+            Image.network(loadedProduct.imageUrl!),
             SizedBox(
               height: 20,
             ),
-            Text(loadedProduct.desc),
+            Text(loadedProduct.desc!),
           ],
         ),
       ),
