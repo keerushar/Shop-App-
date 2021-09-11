@@ -4,7 +4,12 @@ import 'package:shopapp/providers/cart.dart';
 import 'package:shopapp/providers/product.dart';
 import 'package:shopapp/widgets/product_details.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductItem extends StatefulWidget {
+  @override
+  _ProductItemState createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
@@ -23,7 +28,9 @@ class ProductItem extends StatelessWidget {
           backgroundColor: Colors.black54,
           leading: IconButton(
               onPressed: () {
-                product.toggleFavouriteStatus();
+                setState(() {
+                  product.toggleFavouriteStatus();
+                });
               },
               color: Colors.orange,
               icon: Icon(product.isFavourite
