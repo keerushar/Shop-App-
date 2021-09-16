@@ -37,13 +37,7 @@ class CartScreen extends StatelessWidget {
                   Chip(
                       label: Text('RS.${cart.totalAmount.toStringAsFixed(2)}')),
                   Spacer(),
-                  ElevatedButton(
-                      onPressed: () {
-                        order.addOrder(
-                            cart.items.values.toList(), cart.totalAmount);
-                        cart.clear();
-                      },
-                      child: Text("Order Now"))
+                  OrderButton(cart: cart, order: order)
                 ],
               ),
             ),
@@ -65,5 +59,41 @@ class CartScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class OrderButton extends StatefulWidget {
+  const OrderButton({
+    Key? key,
+    required this.cart,
+    required this.order,
+  }) : super(key: key);
+
+  final Cart cart;
+  final Orders order;
+
+  @override
+  _OrderButtonState createState() => _OrderButtonState();
+}
+
+class _OrderButtonState extends State<OrderButton> {
+  var _isLoading = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
+            ? null
+            : () async {
+                setState(() {
+                  _isLoading = true;
+                });
+                await widget.order.addOrder(
+                    widget.cart.items.values.toList(), widget.cart.totalAmount);
+                setState(() {
+                  _isLoading = false;
+                });
+                widget.cart.clear();
+              },
+        child: _isLoading ? CircularProgressIndicator() : Text("Order Now"));
   }
 }
