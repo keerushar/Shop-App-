@@ -20,11 +20,6 @@ class _ProductOverviewState extends State<ProductOverview> {
   var _isLoading = false;
 
   @override
-  void initState() {
-    // Future.delayed(Duration.zero)
-    //     .then((_) => );
-    super.initState();
-  }
 
   @override
   void didChangeDependencies() {

@@ -5,10 +5,10 @@ import 'package:shopapp/providers/orders.dart';
 import 'package:shopapp/providers/products.dart';
 import 'package:shopapp/screen/cartscreen.dart';
 import 'package:shopapp/screen/edit_product.dart';
+import 'package:shopapp/screen/login.dart';
 import 'package:shopapp/screen/orders_screen.dart';
 import 'package:shopapp/screen/user_product_screen.dart';
 import 'package:shopapp/widgets/product_details.dart';
-import 'package:shopapp/widgets/productoverview.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,13 +30,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "MY Shop App",
-        home: ProductOverview(),
+        home: AuthScreen(),
         routes: {
           ProductDetails.routeName: (context) => ProductDetails(),
           CartScreen.routeName: (context) => CartScreen(),
           OrderScreen.routeName: (context) => OrderScreen(),
           UserProductScreen.routeName: (ctx) => UserProductScreen(),
-          EditProduct.routeName: (ctx) => EditProduct(),
+          '/edit-product': (ctx) => EditProduct(),
         },
       ),
     );

@@ -51,7 +51,7 @@ class Cart with ChangeNotifier {
                 title: title,
                 price: price,
                 quantity: 1,
-              ));
+              ),);
     }
     notifyListeners();
   }
@@ -65,14 +65,14 @@ class Cart with ChangeNotifier {
     if (!_items!.containsKey(productId)) {
       return;
     }
-    if (_items![productId]!.quantity > 1) {
+    else if (_items![productId]!.quantity > 1) {
       _items!.update(
           productId,
           (e) => CartItem(
               id: e.id,
               title: e.title,
               quantity: e.quantity - 1,
-              price: e.price));
+              price: e.price),);
     } else {
       _items!.remove(productId);
     }
