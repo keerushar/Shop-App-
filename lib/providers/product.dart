@@ -24,8 +24,10 @@ class Product with ChangeNotifier {
     final oldStatus = isFavourite;
     isFavourite = !isFavourite;
     notifyListeners();
+    print(id);
     final url = Uri.parse(
         'https://shopapp-6eec0-default-rtdb.firebaseio.com/products/$id.json');
+    print('kiran $url');
     try {
       await http.patch(
         url,

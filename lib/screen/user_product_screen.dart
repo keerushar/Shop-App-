@@ -29,7 +29,7 @@ class UserProductScreen extends StatelessWidget {
                 Navigator.pushNamed(context, EditProduct.routeName);
               },
             ),
-          )
+          ),
         ],
       ),
       drawer: AppDrawer(),
